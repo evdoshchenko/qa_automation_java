@@ -107,4 +107,13 @@ public class SecondExample {
             System.out.println("Car:"+eachCar);
         }
     }
+
+    @Test
+    public void testWhile() {
+        int i = 0;
+        while (i<10) {
+            System.out.println("While is still on");
+            i++;
+        }
+    }
 }
