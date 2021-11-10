@@ -91,4 +91,25 @@ public class interviewQuestions
 
         return result;
     }
+
+    @Test
+    public void testCounterLetters() {
+        String input = "hello world";
+        char letterToFind = 'l';
+
+        int amountOfFoundLetters = solutionForLetter(input, letterToFind);
+        System.out.println(amountOfFoundLetters);
+
+        int expectedNumber = 3;
+
+        Assert.assertEquals(expectedNumber, amountOfFoundLetters);
+    }
+
+    private int solutionForLetter(String input, char letterToFind) {
+        int result = 0;
+        for(char eachChar : input.toCharArray()){
+            if(eachChar == letterToFind) result++;
+        }
+        return result;
+    }
 }
