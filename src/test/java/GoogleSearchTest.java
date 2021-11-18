@@ -24,7 +24,7 @@ public class GoogleSearchTest {
         String numberOfResults = array [2] + array [3];
 
         int parseInteger = Integer.parseInt(numberOfResults);
-        Assert.assertTrue(parseInteger > 36000);
+        Assert.assertTrue(parseInteger > 37000);
 
     }
 }
