@@ -1,7 +1,7 @@
 public class Car {
 
+    public int year;
     private String model;
-    int year;
     private String engineType;
 
     public Car(String model, int year, String engineType) {
@@ -18,10 +18,10 @@ public class Car {
         return engineType;
     }
 
-    void drive(){
-        System.out.println("Driving");
+    String drive(){
+          System.out.println("Driving as a Car");
+          return "Driving as a Car";
     }
-
 
     void turnLeft(){
         System.out.println("Turned left");
