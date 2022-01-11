@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 public class TestBase {
@@ -11,29 +12,26 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suitSetup(String browser) {
-
+    public void suiteSetup(@Optional("Chrome") String browser) {
         String os = System.getProperty("os.name");
 
-        if(os.contains("Windows")){
+        if (os.contains("Windows")) {
             System.setProperty("webdriver.gecko.driver", "src/test/resources/windows/geckodriver.exe");
             System.setProperty("webdriver.chrome.driver", "src/test/resources/windows/chromedriver.exe");
         }
 
-        if (browser.equalsIgnoreCase("Firefox")){
+        if (browser.equalsIgnoreCase("Firefox")) {
             driver = new FirefoxDriver();
         }
-        if (browser.equalsIgnoreCase("Chrome")){
+
+        if (browser.equalsIgnoreCase("Chrome")) {
             driver = new ChromeDriver();
         }
-
-
-
     }
 
     @AfterSuite
-    public  void afterSuite(){
+    public void afterSuite(){
         driver.quit();
     }
-
 }
+

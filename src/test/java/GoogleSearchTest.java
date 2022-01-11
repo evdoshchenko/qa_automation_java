@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 public class GoogleSearchTest extends TestBase {
 
     @Test
-    public void testUnusedLocators() {
+    public void testUnUsedLocators() {
+
     }
 
     //1. Navigate to the main page
@@ -20,8 +21,8 @@ public class GoogleSearchTest extends TestBase {
     public void testSearchAndVerifyResults() {
         navigateToMainPage();
         typeQueryAndSubmit();
-        int actualNumberOfResults =  getNumberOfResults();
-        Assert.assertTrue(actualNumberOfResults > 38000);
+        int actualNumberOfResults = getNumberOfResults();
+        Assert.assertTrue(actualNumberOfResults > 35000);
     }
 
     private int getNumberOfResults() {
@@ -30,7 +31,8 @@ public class GoogleSearchTest extends TestBase {
     }
 
     private void typeQueryAndSubmit() {
-        WebElement textInput = driver.findElement(By.name("q"));
+        String nameValue = "q";
+        WebElement textInput = driver.findElement(By.name(nameValue));
         textInput.sendKeys("Portnov Computer School");
         textInput.submit();
     }
@@ -48,7 +50,7 @@ public class GoogleSearchTest extends TestBase {
     @Test
     public void testFirefox() {
         WebDriver driver = new FirefoxDriver();
-        driver.get("https://google.com");
-    }
 
+        driver.get("https://google.com/");
+    }
 }
