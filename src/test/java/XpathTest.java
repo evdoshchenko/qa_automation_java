@@ -1,7 +1,7 @@
 import org.testng.annotations.Test;
-import org.openqa.selenium.By;
+import uitests.TestBase;
 
-public class XpathTest extends TestBase{
+public class XpathTest extends TestBase {
     @Test
     public void testName() {
         String fullXpath = "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input";
