@@ -24,6 +24,11 @@ public class GoogleSearchTest extends TestBase {
         ResultsPages resultsPages = new ResultsPages(driver);
         int actualNumberOfResults = resultsPages.getNumberOfResults();
 
-        Assert.assertTrue(actualNumberOfResults > 35000);
+        Assert.assertTrue(actualNumberOfResults > 350000);
+    }
+
+    @Test
+    public void testName() {
+        Assert.assertTrue(false);
     }
 }

@@ -3,15 +3,17 @@ package uitests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 
+@Listeners(UITestListener.class)
 public class TestBase {
 
     WebDriver driver;
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(@Optional("Chrome") String browser) {
+    public void suiteSetup(@Optional("Chrome") String browser, ITestContext context) {
         String os = System.getProperty("os.name");
 
         if (os.contains("Windows")) {
@@ -26,6 +28,8 @@ public class TestBase {
         if (browser.equalsIgnoreCase("Chrome")) {
             driver = new ChromeDriver();
         }
+
+        context.setAttribute("driver", driver);     // override onTestFailure in ListenerAdapter
     }
 
     @AfterSuite
