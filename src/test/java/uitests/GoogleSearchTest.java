@@ -1,15 +1,11 @@
 package uitests;
 
-import org.testng.Assert;
+import org.junit.Assert;
 import org.testng.annotations.Test;
 import uitests.pages.MainPage;
 import uitests.pages.ResultsPages;
 
 public class GoogleSearchTest extends TestBase {
-
-
-
-
     //1. Navigate to the main page
     //2. Type the query and submit
     //3. Assert the amount result
@@ -17,6 +13,8 @@ public class GoogleSearchTest extends TestBase {
     // - compare that with expectations
     @Test(dataProvider = "strings for query")
     public void testSearchAndVerifyResults(String paramOne) {
+        int testExpectedNumber = 4500000;
+
         MainPage mainPage = new MainPage(driver);
         mainPage.navigate();
         mainPage.typeQueryAndSubmit(paramOne);
@@ -24,11 +22,7 @@ public class GoogleSearchTest extends TestBase {
         ResultsPages resultsPages = new ResultsPages(driver);
         int actualNumberOfResults = resultsPages.getNumberOfResults();
 
-        Assert.assertTrue(actualNumberOfResults > 350000);
-    }
-
-    @Test
-    public void testName() {
-        Assert.assertTrue(false);
+        Assert.assertTrue("amount of result is less than " + testExpectedNumber,
+                actualNumberOfResults > testExpectedNumber);
     }
 }
